@@ -27,6 +27,41 @@ question("What's your name?", function (err, answer) {
 * `options` **{String}**: Additional options to pass.    
 * `callback` **{Function}**: Callback function that will be passed an error and/or the results of asking the question.    
 
+## Examples
+
+Pass a `questions` object, where the value of each property is a question to ask:
+
+```js
+var context = {
+  questions: {
+    name: 'What is your name?',
+    description: 'Project description?',
+    author: {
+      name: 'Author name?',
+      url: 'Author url?',
+    }
+  }
+};
+
+// Q: 'What is your name?'
+question('name', context, function (err, answer) {
+  if (err) console.log(err);
+  // A: 'Jon'
+});
+
+// Q: 'Project description?'
+question('description', context, function (err, answer) {
+  if (err) console.log(err);
+  // A: 'Template helper that asks a question...'
+});
+
+// Q: 'Author name?'
+question('author.name', context, function (err, answer) {
+  if (err) console.log(err);
+  // A: 'Brian Woodward'
+});
+```
+
 
 ### Template 
 
