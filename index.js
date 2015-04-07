@@ -7,28 +7,45 @@
 
 'use strict';
 
+var isObject = require('isobject');
 var inquirer = require('inquirer');
+var extend = require('extend-shallow');
 
-module.exports = function questionHelper(key, options, next) {
-  var ctx = this && (this.ctx || this.context) || {};
+module.exports = function questionHelper(key, opts, cb) {
+  if (typeof key === 'function') {
+    cb = key;
+    opts = {};
+    key = null;
+  }
 
-  if (typeof options === 'function') {
-    next = options;
-    options = {};
+  if (typeof opts === 'function') {
+    cb = opts;
+    opts = {};
   }
 
   if (typeof key !== 'string') {
-    return next(new Error('Question expected the first parameter to be a string, but got [' + (typeof key) + ']'));
+    var arg = JSON.stringify(key);
+    return cb(new Error('question helper expects the first argument to be a string, but got: ' + arg));
   }
 
-  var q = ctx && ctx.questions && ctx.questions[key];
-  if (!q) q = key;
-  var obj = {
-    name: key,
-    message: q
-  };
+  if (typeof opts === 'string') {
+    var str = opts;
+    opts = {};
+    opts[key] = str;
+  }
 
-  inquirer.prompt([obj], function (answers) {
-    return next(null, answers[key]);
+  var context = (this && this.context) || {};
+  opts = opts || {};
+
+  context.questions = extend({}, context.questions, opts);
+  var question = context.questions[key] || key;
+
+  var result = typeof question === 'string' ? {
+    name: key,
+    message: question
+  } : question;
+
+  inquirer.prompt([result], function (answers) {
+    return cb(null, answers[key]);
   });
 };
