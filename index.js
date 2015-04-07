@@ -37,8 +37,8 @@ module.exports = function questionHelper(key, opts, cb) {
   var context = (this && this.context) || {};
   opts = opts || {};
 
-  context.questions = extend({}, context.questions, opts);
-  var question = context.questions[key] || key;
+  var questions = extend({}, context.questions, opts);
+  var question = questions[key] || key;
 
   var result = typeof question === 'string' ? {
     name: key,
