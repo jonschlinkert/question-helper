@@ -1,7 +1,7 @@
 {
   "name": "question-helper",
   "description": "Template helper that asks a question in the command line and resolves the template with the answer.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://github.com/doowb/question-helper",
   "author": {
     "name": "Brian Woodward",
@@ -30,8 +30,7 @@
   },
   "dependencies": {
     "extend-shallow": "^1.1.2",
-    "inquirer": "^0.8.0",
-    "isobject": "^1.0.0"
+    "inquirer": "^0.8.0"
   },
   "devDependencies": {
     "chalk": "^1.0.0",

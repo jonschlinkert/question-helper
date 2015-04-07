@@ -7,7 +7,6 @@
 
 'use strict';
 
-var isObject = require('isobject');
 var inquirer = require('inquirer');
 var extend = require('extend-shallow');
 
