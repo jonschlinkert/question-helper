@@ -1,7 +1,7 @@
 {
   "name": "question-helper",
-  "description": "Helper used to ask questions and output the answer. Useful with Template, Handlebars, and Loadash.",
-  "version": "0.1.0",
+  "description": "Template helper that asks a question in the command line and resolves the template with the answer.",
+  "version": "0.2.0",
   "homepage": "https://github.com/doowb/question-helper",
   "author": {
     "name": "Brian Woodward",
@@ -29,13 +29,16 @@
     "test": "mocha"
   },
   "dependencies": {
-    "inquirer": "^0.8.0"
+    "extend-shallow": "^1.1.2",
+    "inquirer": "^0.8.0",
+    "isobject": "^1.0.0"
   },
   "devDependencies": {
+    "chalk": "^1.0.0",
     "engine-handlebars": "^0.6.1",
-    "mocha": "*",
-    "should": "^4.3.0",
-    "template": "^0.10.2"
+    "engine-lodash": "^0.6.2",
+    "should": "^5.2.0",
+    "template": "^0.12.6"
   },
   "keywords": [
     "async",
