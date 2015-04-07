@@ -9,6 +9,7 @@
 
 var inquirer = require('inquirer');
 var extend = require('extend-shallow');
+var get = require('get-value');
 
 module.exports = function questionHelper(key, opts, cb) {
   if (typeof key === 'function') {
@@ -33,11 +34,12 @@ module.exports = function questionHelper(key, opts, cb) {
     opts[key] = str;
   }
 
+
   var context = (this && this.context) || {};
   opts = opts || {};
 
   var questions = extend({}, context.questions, opts);
-  var question = questions[key] || key;
+  var question = get(questions, key) || key;
 
   var result = typeof question === 'string' ? {
     name: key,

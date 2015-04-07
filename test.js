@@ -9,7 +9,10 @@ var timeout = 5000;
 var context = {
   questions: {
     name: 'What\'s your name?',
-    dob: 'When\'s your birtday?'
+    dob: 'When\'s your birtday?',
+    author: {
+      name: 'Author name?'
+    }
   }
 };
 
@@ -24,7 +27,15 @@ describe('questions', function () {
 
   it('should return an answer given a question key', function (cb) {
     this.timeout(timeout);
-    question.call({ctx: context}, 'name', function (err, answer) {
+    question.call({context: context}, 'name', function (err, answer) {
+      answer.should.be.a.string;
+      cb();
+    });
+  });
+
+  it('should ask questions from nested properties', function (cb) {
+    this.timeout(timeout);
+    question.call({context: context}, 'author.name', function (err, answer) {
       answer.should.be.a.string;
       cb();
     });
