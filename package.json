@@ -1,7 +1,7 @@
 {
   "name": "question-helper",
   "description": "Template helper that asks a question in the command line and resolves the template with the answer.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/doowb/question-helper",
   "author": {
     "name": "Brian Woodward",
