@@ -1,23 +1,14 @@
 {
   "name": "question-helper",
   "description": "Template helper that asks a question in the command line and resolves the template with the answer.",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "homepage": "https://github.com/doowb/question-helper",
-  "author": {
-    "name": "Brian Woodward",
-    "url": "https://github.com/doowb"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/doowb/question-helper.git"
-  },
+  "author": "Brian Woodward (https://github.com/doowb)",
+  "repository": "doowb/question-helper",
   "bugs": {
     "url": "https://github.com/doowb/question-helper/issues"
   },
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/doowb/question-helper/blob/master/LICENSE"
-  },
+  "license": "MIT",
   "files": [
     "index.js"
   ],
@@ -29,12 +20,13 @@
     "test": "mocha"
   },
   "dependencies": {
-    "extend-shallow": "^1.1.2",
-    "get-value": "^1.1.3",
-    "inquirer": "^0.8.0"
+    "extend-shallow": "^2.0.1",
+    "get-value": "^1.1.5",
+    "inquirer": "^0.9.0",
+    "lazy-cache": "^0.1.0"
   },
   "devDependencies": {
-    "chalk": "^1.0.0",
+    "ansi-green": "^0.1.1",
     "engine-handlebars": "^0.6.1",
     "engine-lodash": "^0.6.2",
     "should": "^5.2.0",
