@@ -7,9 +7,10 @@
 
 'use strict';
 
-var inquirer = require('inquirer');
-var extend = require('extend-shallow');
-var get = require('get-value');
+var lazy = require('lazy-cache')(require);
+var inquirer = lazy('inquirer');
+var extend = lazy('extend-shallow');
+var get = lazy('get-value');
 
 module.exports = function questionHelper(key, opts, cb) {
   if (typeof key === 'function') {
@@ -38,15 +39,14 @@ module.exports = function questionHelper(key, opts, cb) {
   var context = (this && this.context) || {};
   opts = opts || {};
 
-  var questions = extend({}, context.questions, opts);
-  var question = get(questions, key) || key;
+  var questions = extend()({}, context.questions, opts);
+  var question = get()(questions, key) || key;
 
-  var result = typeof question === 'string' ? {
-    name: key,
-    message: question
-  } : question;
+  var result = typeof question === 'string'
+    ? {name: key, message: question}
+    : question;
 
-  inquirer.prompt([result], function (answers) {
+  inquirer().prompt([result], function (answers) {
     return cb(null, answers[key]);
   });
 };

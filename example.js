@@ -1,6 +1,6 @@
-var chalk = require('chalk');
+var green = require('ansi-green');
 var question = require('./');
 
 question('What\'s your name?', function (err, answer) {
-  console.log(chalk.green('Hi %s!'), answer);
+  console.log(green('Hi %s!'), answer);
 });
